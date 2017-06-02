@@ -1,0 +1,281 @@
+//swiper轮播图的使用规则  （vertical="true"时轮播图上的黑点就出现在右侧。在其wxml中加入）
+iPhone5	1rpx = 0.42px	1px = 2.34rpx
+iPhone6	1rpx = 0.5px	1px = 2rpx
+iPhone6s	1rpx = 0.552px	1px = 1.81rpx
+#1
+//index.js
+var app = getApp()
+Page({
+  data: {
+    
+    imgUrls: [
+     
+      '/pages/image/Font1.png',
+      '/pages/image/bai.jpg',
+      '../../pages/image/守望.jpg',
+      '../../pages/image/LOGO.png'
+   
+
+    ],
+    indicatorDots: true,
+    autoplay: true,
+    interval: 3000,
+    duration: 1000,
+    
+  },
+  onLoad: function () {
+    console.log('onLoad')
+  }
+})
+
+#2
+<!--index.wxml-->
+<view class="container">
+     <swiper class="Aswiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">  
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" height="300px"/>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+#3
+/**index.wxss**/
+/**设置图片的长度**/
+.Aswiper{
+  height:480rpx;
+  width:100%
+}
+.Aswiper image{
+  width: 100%;
+}
+
+
+
+//button按钮的使用规则：（border： 2rpx边框的厚度 solid实线 #405f80边框的颜色； boder-radius：10rpx边框的圆角弧度；）
+#1
+//index.js
+ button: {
+      defaultSize: 'default',
+      disabled: false,
+      plain: false,
+      loading: false
+    },
+
+#2
+//wxml
+<view>
+       <button class="myBtn" bindtap="findHouse">自助点餐</button>
+</view>
+#3
+//wxss
+.myBtn{
+   background-color:  #8B0000;
+   width:92%;
+   color: #fff;
+   font-size: 32rpx;
+   /** font-size为该组件内字体大小**/
+   height: 88rpx;
+   line-height: 88rpx;
+   margin-top: 40rpx;
+   /** margin-top为该组件的与上一个组件之间的空格距离**/
+   box-shadow: 0 0 20rpx 4rpx  #becee7
+   /** 阴影设置**/
+   text-align: center;     /** 组件内文字居中**/
+}
+/** 修改button默认的点击态样式类**/
+.button-hover {
+  background-color:  #e64340;
+  color: #fff;
+}
+
+//利用循环语句做按键列表
+#1
+//index.js
+    navItems:[         ／* nacitems 为循环语句的共有词，对应‘117’句
+      {
+        name:'堂食',
+        url:'dishes'   ／* 这个为跳转地址，与’118‘句子对应，可以详细写为：../components/dishes/dishes
+
+      }
+      {
+        name:'外卖',
+        url:'take',
+        isSplot:true
+      },
+     
+      {
+        name:'报表',
+        url:'bill'
+      }
+    ]
+
+#2
+<!--index.wxml-->
+  <view class="nav-block wrap">
+    <block wx:for="{{navItems}}">   /* block是一个循环语句
+      <view class="wrap-item {{item.isSplot ? 'exp' : ''}}">  
+        <navigator url="../components/{{item.url}}/{{item.url}}" hover-class="navigator-hover">{{item.name}}</navigator>
+        上一列就是地址的分配
+      </view>
+    </block>
+  </view>
+  #3
+  .wrap{
+	display: inline-block;
+	margin-top: .8rem;
+}
+.wrap-item{
+	display: inline-block;
+	width: 100%;
+	height: 6rem;
+	line-height: 6rem;
+	border-bottom: 1px solid #ddd;
+	background-color: #fff;
+	text-align: center;
+}
+ /*不支持 :nth-child(2);*/
+.wrap-item.exp{
+	border: 1px solid #ddd;
+	border-top: 0;
+}
+
+
+//几种阴影效果
+ box-shadow: 0 0 0 1px #ccc;／*外围一圈黑*／
+ box-shadow: 0 20rpx 40rpx #eee;／*底部投影*／
+ box-shadow: 0 0 40rpx #f4f4f4 inset;／*内发光*／
+
+//插html中插入图片 
+ <image src="http://chuantu.biz/t5/96/1495988012x2890173825.jpg" />
+//插入字符
+<view class= "kio" >Kio@2017</view>
+//插入图片，且图片的地址在index.js中标注出来imgbx.bomImg ul：xxxx
+<image class="bomImg" src="{{imgbx.bomImg}}"></image>
+
+ .bomImg{
+   position: relative;
+   width: 731rpx;
+   height: 164rpx;
+   margin-left: 9rpx;
+   margin-top: 30rpx;
+}
+
+//最简单的跳转
+例如：点击一个文字‘xtt’ ,就跳转入一个新的页面。
+首先对该文字‘xtt’ 设置监听事件如下
+ <view bindtap="toast" class="usermotto">
+    <text class="user-motto">{{xtt}}</text>
+  </view>
+然后对该 ’xtt‘ 设置事件跳转。
+#事件处理函数 点击xtt
+  toast: function() {
+    wx.navigateTo({
+      url: '../logs/logs'
+    })
+  },
+
+
+wxf215a406ec6bd89a
+
+
+
+
+
+
+
+//页面的跳转添加
+#1 先在<!--.js-->中添加组建navToPage
+navToPage(event) {
+    let route = event.currentTarget.dataset.route
+    wx.navigateTo({
+      url: route
+    })
+  }
+#2 然后在<!--.wxml-->添加 【data-route="../components/logs/logs" bindtap="navToPage"】具体操作如下
+<view class="my-lists">
+    <view class="my-list" data-route="../components/logs/logs" bindtap="navToPage">
+      <image class="my-list-icon" src="/pages/image/card.png"></image>
+       <text class="my-list-text">我的卡包</text>
+       <text class="my-list-you">更多优惠券</text>
+      <image class="my-list-arrow" src="/pages/image/right-gray.png"></image>
+    </view>
+</view>
+    ／*下列为在按钮中添加跳转链接
+    <view>
+        <button class="myBtn" data-route="../components/logs/logs" bindtap="navToPage">自助点餐</button>
+    </view>
+
+
+//搭建交互的列表
+先在 其 wxml 中 描写整个交互框架 具体如下三个列表
+<view class="my-lists">
+    <view class="my-list" data-route="../components/logs/logs" bindtap="navToPage">      ／*添加跳转
+      <image class="my-list-icon" src="/pages/image/card.png"></image>                   ／*添加图标
+       <text class="my-list-text">我的卡包</text>
+       <text class="my-list-you">更多优惠券</text>
+      <image class="my-list-arrow" src="/pages/image/right-gray.png"></image>            ／*添加图标
+    </view>
+</view>
+<view class="my-lists">
+    <view class="my-list">
+      <image class="my-list-icon" src="/pages/image/order.png"></image>
+      <text class="my-list-text">我的订单</text>
+       <text class="my-list-you">查看订单</text>
+      <image class="my-list-arrow" src="/pages/image/right-gray.png"></image>
+    </view>
+  </view>
+  <view class="my-lists">
+    <view class="my-list">
+      <image class="my-list-icon" src="/pages/image/city.png"></image>
+      <text class="my-list-text">奥币商城</text>
+       <text class="my-list-you">更多产品</text>
+      <image class="my-list-arrow" src="/pages/image/right-gray.png"></image>
+    </view>
+  </view>
+然后在wxss中设置列表的具体排版
+.my-list {
+  padding: 10rpx 10rpx;
+  display: flex;          ／*调用空隙 用于 ‘229’句
+  align-items: center;    ／*居中
+}
+
+.my-list-icon{           /*图标的尺寸大小
+  width: 78rpx;
+  height: 78rpx;
+  margin-left: 80rpx;    /*左靠 80rpx
+}
+
+.my-list-text{          /*表内文字标题格式
+  flex: 1;              /*表内两个文字标题之间的距离 使用前必须先写‘display：flex’来调用
+  font-size: 25rpx;
+  margin-left: 35rpx;
+}
+.my-list-you {
+  margin-right: 15rpx; 
+  color: #d9d9d9;
+  font-size: 21rpx;
+}
+
+.my-list-arrow{         /*图标的尺寸大小
+  width: 28rpx;
+  height: 28rpx;
+  margin-left: 10rpx;  
+} 
+
+//设定所有页面的底色，写入wxss文件中
+page{
+    background-color:red;
+}
+
+//图片或者文字的位置固定，写入wxss文件中
+ 
+ position:fixed;  
+ left:50%;  
+ top:100px; 
+
+ // top:顶部  bottom：底部  left：左  right：右
+
+//图形中某个文字的居中，一般要写在文字的载体的属性
+ text-align: center;
