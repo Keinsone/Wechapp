@@ -1,0 +1,34 @@
+<view class="container flex-wrap flex-direction-row">
+	<!-- 左侧栏 -->
+	<view class="aside flex-wrap flex-direction-col">
+		<block wx:for="{{navList}}">
+			<text class="type-nav {{curNav == item.id ? 'selected' : ''}}" bindtap="selectNav" data-index="{{index}}" data-id="{{item.id}}">{{item.name}}</text>
+		</block>
+	</view>
+
+	<!-- content -->
+	<view class="content flex-item">
+		<block wx:for="{{dishesList[curIndex]}}">
+			<view class="dish flex-wrap flex-direction-row" catchtap="selectDish" data-dish="{{item.id}}" data-price="{{item.price}}">
+				<image style="width: 80px; height: 80px;" src="{{item.img}}"></image>
+				<view class="flex-item">
+					<text class="title">{{item.name}}</text>
+					<text class="price">￥{{item.price}}</text>
+				</view>
+         <!-- 右边界面框的菜品选中logo -->
+				<view class="add-btn"><icon type="{{item.status ? 'success' : 'circle'}}" color="#E60012" size="30"></icon></view>
+       
+			</view>
+		</block>
+
+	</view>
+
+</view>
+
+<!-- cart -->
+<view class="cart">
+	<text class="total">购物车：￥{{cartTotal}}</text>
+	<text class="payoff">结账</text>
+</view>
+
+<loading hidden="{{hidden}}">Loading…</loading>

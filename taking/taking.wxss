@@ -1,0 +1,125 @@
+
+
+/**左边栏**/
+.aside{
+  
+  
+  margin-top:17rem; 
+	width:4rem;
+	font-size: .80rem;
+  color: #fafafa;
+	position: fixed;
+  
+}
+/**左边栏以及菜单的边框属性**/
+.type-nav{
+  margin-top:10rpx;
+
+	padding:.7rem .3rem;
+	text-align: center;
+	z-index: 10;
+  box-shadow: 0 0 25rpx 0.1rpx lightgray;
+  background: #E60012;
+}
+/**左边栏被选中后字体变化**/
+.type-nav.selected{
+	margin-right: -1px;
+	padding-left:-1px;
+	color: #6D6A6A;
+	background-color: #fafafa;
+}
+
+/**右界面背景色**/
+.content{
+	background-color: #fafafa;
+}
+
+/**右界面菜品之间的属性**/
+.dish{
+	margin-top: 0.7rem;
+  margin-left: 4.3rem;
+	padding: 0.5rem;
+	border-bottom: 1px solid #ddd;
+  box-shadow: 0 0 20rpx 0.1rpx lightgray;
+}
+/**右界面菜名**/
+.dish .title{
+	display: block;
+	font-size: 0.8rem;
+  margin-top:17px;
+  margin-left: 1.2rem;
+	font-weight: bolder;
+  color:#6D6A6A;
+	margin-bottom: 10px;
+}
+/**右界面价格**/
+.dish .price{
+	color: #E60012;
+	font-size: 1rem;
+  margin-left: 1.2rem;
+	font-weight: bolder;
+}
+/**右界面每条列表的宽度等等属性**/
+.dish .add-btn{
+	width: 3rem;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+/**底部边栏字体颜色**/
+.cart{
+	display: block;
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	color: #fafafa;
+}
+
+.image {
+	margin-right: 0px;
+}
+
+/**底部边栏左**/
+.cart .total {
+	float: left;
+	height: 50px;
+	line-height: 50px;
+	width:68%;
+	text-align: center;
+	font-weight: bolder;
+  font-size: 25px;
+  color: #6D6A6A;
+  box-shadow: 0 0 20rpx 0.1rpx lightgray;
+	background: #FDFDFD;
+}
+
+/**底部边栏右**/
+.cart .payoff{
+	float: right;
+	background: #E60012;
+	height: 50px;
+	line-height: 50px;
+	width:29%;
+	text-align: center;
+	font-weight: bolder;
+  font-size: 25px;
+  color: #C22B3B;
+  border-left: 1.5px solid #6D6A6A;
+  border-top: 1.5px solid #6D6A6A;
+	background: #FDFDFD;
+}
+
+
+.flex-wrap{
+	display: flex;
+}
+.flex-item{
+	flex: 1;
+}
+.flex-wrap.flex-direction-col{
+	flex-direction: column;
+}
+.flex-wrap.flex-direction-row{
+	flex-direction: row;
+}
